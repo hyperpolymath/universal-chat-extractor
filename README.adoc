@@ -1,0 +1,8 @@
+= Universal Chat Extractor
+:toc: auto
+
+Extract and export chat histories from multiple platforms.
+
+== License
+
+AGPL-3.0-or-later
