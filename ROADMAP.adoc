@@ -1,0 +1,381 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+= Universal Chat Extractor - Roadmap
+:toc: auto
+:toclevels: 2
+:icons: font
+
+== Current Status
+
+[cols="1,1,3"]
+|===
+|Version |Date |Description
+
+|0.1.0
+|2025-12-17
+|Infrastructure setup, multi-forge CI/CD mirroring
+|===
+
+=== Completed
+
+* [x] Repository initialization
+* [x] Multi-platform git mirroring (GitHub, GitLab, Codeberg, Bitbucket)
+* [x] CI/CD infrastructure with security hardening
+* [x] AGPL-3.0-or-later licensing
+* [x] Language policy defined (ReScript + Deno + Rust)
+
+=== Security Hardening Applied
+
+* [x] SSH host key verification (MITM protection)
+* [x] Credential persistence disabled
+* [x] Concurrency controls for race condition prevention
+* [x] Job timeouts to prevent resource abuse
+* [x] Shell hardening with `set -euo pipefail`
+* [x] Pinned GitHub Actions with SHA hashes
+
+'''
+
+== Phase 1: Core Infrastructure
+
+=== 1.1 Project Structure
+
+[cols="1,4"]
+|===
+|Task |Description
+
+|[ ] Source structure
+|Create `src/`, `tests/`, `docs/` directories
+
+|[ ] Deno config
+|Initialize `deno.json` with imports map
+
+|[ ] ReScript setup
+|Configure `rescript.json` for compilation
+
+|[ ] Guix manifest
+|Create `guix.scm` for reproducible builds
+|===
+
+=== 1.2 CI/CD Pipeline Expansion
+
+[cols="1,4"]
+|===
+|Task |Description
+
+|[ ] Linting
+|Add ReScript and Rust linting workflows
+
+|[ ] Testing
+|Unit test workflow with coverage reporting
+
+|[ ] Security scanning
+|CodeQL or Snyk integration
+
+|[ ] Build verification
+|Ensure clean builds on all commits
+|===
+
+=== 1.3 Documentation
+
+[cols="1,4"]
+|===
+|Task |Description
+
+|[ ] CONTRIBUTING.adoc
+|Contribution guidelines
+
+|[ ] CODE_OF_CONDUCT.adoc
+|Community standards
+
+|[ ] LICENSE
+|Full AGPL-3.0 text file
+|===
+
+'''
+
+== Phase 2: Core Extraction Engine
+
+=== 2.1 Parser Framework
+
+[cols="1,4"]
+|===
+|Task |Description
+
+|[ ] Parser interface
+|Define ReScript module type for all parsers
+
+|[ ] Plugin registry
+|Dynamic parser loading/registration system
+
+|[ ] Error handling
+|Structured error types for parse failures
+|===
+
+=== 2.2 Platform Parsers
+
+Priority order based on export format complexity and user demand:
+
+[cols="1,2,2"]
+|===
+|Priority |Platform |Export Format
+
+|1
+|WhatsApp
+|`.txt` plain text export
+
+|2
+|Telegram
+|JSON export
+
+|3
+|Discord
+|JSON export (via data request)
+
+|4
+|Signal
+|Encrypted backup format
+
+|5
+|iMessage
+|SQLite database (`chat.db`)
+
+|6
+|Facebook Messenger
+|JSON export
+
+|7
+|Slack
+|JSON export
+|===
+
+=== 2.3 Unified Data Model
+
+[source,rescript]
+----
+type message = {
+  id: string,
+  timestamp: Js.Date.t,
+  sender: participant,
+  content: messageContent,
+  replyTo: option<string>,
+  attachments: array<attachment>,
+  platform: platform,
+}
+
+type messageContent =
+  | Text(string)
+  | Media(mediaRef)
+  | System(string)
+  | Deleted
+
+type participant = {
+  id: string,
+  displayName: string,
+  phone: option<string>,
+}
+----
+
+'''
+
+== Phase 3: Export Engine
+
+=== 3.1 Export Formats
+
+[cols="1,2,2"]
+|===
+|Format |Use Case |Implementation
+
+|JSON
+|Programmatic access, archival
+|Native serialization
+
+|CSV
+|Spreadsheet analysis
+|Tabular flattening
+
+|HTML
+|Human-readable viewing
+|Templated generation
+
+|Markdown
+|Documentation, notes
+|Structured text output
+
+|PDF
+|Formal archival, printing
+|Via Rust library (printpdf)
+|===
+
+=== 3.2 Export Options
+
+[cols="1,3"]
+|===
+|Option |Description
+
+|Date range
+|Filter messages by start/end timestamps
+
+|Participants
+|Include/exclude specific senders
+
+|Media handling
+|Embed / reference / skip attachments
+
+|Anonymization
+|Replace names with pseudonyms
+|===
+
+'''
+
+== Phase 4: Command Line Interface
+
+=== 4.1 CLI Features
+
+[cols="1,3"]
+|===
+|Feature |Description
+
+|[ ] Argument parsing
+|Platform, input, output, format flags
+
+|[ ] Progress indicators
+|Real-time extraction progress
+
+|[ ] Verbose mode
+|Detailed logging for debugging
+
+|[ ] Config file
+|TOML configuration support
+|===
+
+=== 4.2 Example Usage
+
+[source,bash]
+----
+# Extract WhatsApp chat to JSON
+uce extract --platform whatsapp --input chat.txt --output messages.json
+
+# Convert Telegram export to Markdown with date filter
+uce extract --platform telegram --input result.json \
+  --output chat.md --format markdown \
+  --from 2024-01-01 --to 2024-06-30
+
+# Anonymize Discord export
+uce extract --platform discord --input package.zip \
+  --output anon.json --anonymize
+----
+
+'''
+
+== Phase 5: Advanced Features
+
+=== 5.1 Analysis Tools
+
+[cols="1,3"]
+|===
+|Feature |Description
+
+|[ ] Statistics
+|Message counts, frequency analysis, active hours
+
+|[ ] Activity graphs
+|Participant activity over time
+
+|[ ] Search
+|Full-text keyword/phrase search
+
+|[ ] Sentiment
+|Optional sentiment analysis (Rust ML)
+|===
+
+=== 5.2 Privacy Enhancements
+
+[cols="1,3"]
+|===
+|Feature |Description
+
+|[ ] PII detection
+|Identify phone numbers, emails, addresses
+
+|[ ] Redaction
+|Automatic PII removal/replacement
+
+|[ ] Encryption
+|AES-256 encrypted export files
+
+|[ ] Secure deletion
+|Overwrite temporary files
+|===
+
+=== 5.3 Integration
+
+[cols="1,3"]
+|===
+|Feature |Description
+
+|[ ] Library API
+|ReScript/JS module for programmatic use
+
+|[ ] WASM build
+|Browser-compatible extraction
+
+|[ ] Container
+|Docker/Podman image for isolated execution
+|===
+
+'''
+
+== Security Considerations
+
+=== Input Validation
+
+* Sanitize all file paths (no directory traversal)
+* Validate file formats before parsing
+* Memory limits for large files
+* Timeout for parsing operations
+
+=== Dependencies
+
+* SHA-pinned versions only
+* Regular security audits
+* Automated vulnerability scanning
+* No runtime network access
+
+=== Data Handling
+
+* Zero telemetry
+* No cloud uploads
+* Clear data flow documentation
+* Memory zeroing for sensitive data
+
+'''
+
+== Version Milestones
+
+[cols="1,1,3"]
+|===
+|Version |Target |Features
+
+|0.2.0
+|TBD
+|Project structure, ReScript/Deno setup
+
+|0.3.0
+|TBD
+|WhatsApp parser, JSON export
+
+|0.4.0
+|TBD
+|Telegram + Discord parsers
+
+|0.5.0
+|TBD
+|CLI interface, multiple export formats
+
+|1.0.0
+|TBD
+|All Phase 1-4 features complete
+|===
+
+'''
+
+_Last updated: 2025-12-26_

@@ -1,8 +1,143 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
 = Universal Chat Extractor
+Jonathan D.A. Jewell <jonathan@hyperpolymath.org>
 :toc: auto
+:toclevels: 3
+:icons: font
+:source-highlighter: rouge
+:experimental:
 
-Extract and export chat histories from multiple platforms.
+Extract, parse, and export chat histories from multiple messaging platforms into unified formats.
+
+== Project Status
+
+[IMPORTANT]
+====
+*Repository project specification - implementation pending.*
+
+This repository contains infrastructure and planning materials. Core application code will be uploaded shortly.
+====
+
+=== What Exists Now
+
+[cols="1,3"]
+|===
+|Component |Status
+
+|Multi-forge mirroring
+|Configured for GitHub, GitLab, Codeberg, Bitbucket
+
+|CI/CD infrastructure
+|Security-hardened with SSH host key verification, SHA-pinned actions
+
+|Language policy
+|ReScript + Deno + Rust stack defined
+
+|Licensing
+|AGPL-3.0-or-later
+|===
+
+== Vision
+
+Universal Chat Extractor provides a unified tool for extracting chat data from various messaging platforms, normalizing it into a common schema, and exporting to multiple formats - all while respecting user privacy through local-only processing.
+
+=== Target Platforms
+
+* WhatsApp (`.txt` export)
+* Telegram (JSON export)
+* Discord (JSON export)
+* Signal (backup format)
+* iMessage (SQLite database)
+* Facebook Messenger (JSON export)
+* Slack (JSON export)
+
+=== Export Formats
+
+* JSON (structured)
+* CSV (tabular)
+* HTML (viewable)
+* Markdown
+* PDF
+
+== Technology Stack
+
+Per the link:.claude/CLAUDE.md[Hyperpolymath Language Policy]:
+
+[cols="1,2"]
+|===
+|Layer |Technology
+
+|Primary application code
+|ReScript (compiles to JS)
+
+|Runtime
+|Deno (not Node/npm/Bun)
+
+|Performance-critical components
+|Rust / WASM
+
+|Package management
+|Guix (primary), Nix (fallback), Deno imports
+|===
+
+== Quick Start
+
+[NOTE]
+====
+Implementation pending. This section will be updated when core functionality is available.
+====
+
+== Architecture
+
+The system follows a plugin-based parser architecture:
+
+[source]
+----
+┌─────────────────────────────────────────────────────────┐
+│                    CLI Interface                        │
+├─────────────────────────────────────────────────────────┤
+│                   Parser Registry                       │
+├──────────┬──────────┬──────────┬──────────┬────────────┤
+│ WhatsApp │ Telegram │ Discord  │ Signal   │ ...        │
+│ Parser   │ Parser   │ Parser   │ Parser   │            │
+├──────────┴──────────┴──────────┴──────────┴────────────┤
+│              Unified Message Schema                     │
+├─────────────────────────────────────────────────────────┤
+│                  Export Engine                          │
+├──────────┬──────────┬──────────┬──────────┬────────────┤
+│   JSON   │   CSV    │   HTML   │ Markdown │   PDF      │
+└──────────┴──────────┴──────────┴──────────┴────────────┘
+----
+
+== Privacy & Security
+
+* *Local-only processing* - no cloud uploads, no telemetry
+* *Secure memory handling* - sensitive data cleared after use
+* *PII detection* - optional anonymization mode
+* *Encrypted exports* - password-protected output files
+* *No MD5/SHA1* - SHA256+ for all cryptographic operations
+
+== Repository Mirrors
+
+This project is mirrored across multiple forges:
+
+* https://github.com/hyperpolymath/universal-chat-extractor[GitHub] (primary)
+* https://gitlab.com/hyperpolymath/UniversalChatExtractor[GitLab]
+* https://codeberg.org/hyperpolymath/universal-chat-extractor[Codeberg]
+* https://bitbucket.org/hyperpolymath/universal-chat-extractor[Bitbucket]
 
 == License
 
-AGPL-3.0-or-later
+This project is licensed under link:https://www.gnu.org/licenses/agpl-3.0.html[AGPL-3.0-or-later].
+
+== Roadmap
+
+See link:ROADMAP.adoc[ROADMAP.adoc] for detailed development phases and milestones.
+
+== Contributing
+
+Contributions welcome. Please ensure:
+
+* Code follows the link:.claude/CLAUDE.md[language policy] (no TypeScript, no Node.js, no Go)
+* All commits include SPDX license headers
+* Dependencies are SHA-pinned
