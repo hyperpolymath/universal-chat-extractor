@@ -39,7 +39,7 @@ This repository contains infrastructure and planning materials. Core application
 |ReScript + Deno + Rust stack defined
 
 |Licensing
-|AGPL-3.0-or-later
+|PMPL-1.0-or-later
 |===
 
 == Vision
@@ -133,7 +133,7 @@ This project is mirrored across multiple forges:
 
 == License
 
-This project is licensed under link:https://www.gnu.org/licenses/agpl-3.0.html[AGPL-3.0-or-later].
+This project is licensed under link:https://github.com/hyperpolymath/palimpsest-license.html[PMPL-1.0-or-later].
 
 == Roadmap
 
