@@ -145,3 +145,8 @@ Contributions welcome. Please ensure:
 * Code follows the link:.claude/CLAUDE.md[language policy] (no TypeScript, no Node.js, no Go)
 * All commits include SPDX license headers
 * Dependencies are SHA-pinned
+
+
+== Architecture
+
+See link:TOPOLOGY.md[TOPOLOGY.md] for a visual architecture map and completion dashboard.
