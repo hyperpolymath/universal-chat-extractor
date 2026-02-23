@@ -1,6 +1,5 @@
-image:[License,link="https://github.com/hyperpolymath/palimpsest-license"]
-
-// SPDX-License-Identifier: PMPL-1.0
+image:https://img.shields.io/badge/License-PMPL--1.0-blue.svg[License: PMPL-1.0,link="https://github.com/hyperpolymath/palimpsest-license"]
+// SPDX-License-Identifier: PMPL-1.0-or-later
 // SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
 
 = Universal Chat Extractor
@@ -146,3 +145,8 @@ Contributions welcome. Please ensure:
 * Code follows the link:.claude/CLAUDE.md[language policy] (no TypeScript, no Node.js, no Go)
 * All commits include SPDX license headers
 * Dependencies are SHA-pinned
+
+
+== Architecture
+
+See link:TOPOLOGY.md[TOPOLOGY.md] for a visual architecture map and completion dashboard.
