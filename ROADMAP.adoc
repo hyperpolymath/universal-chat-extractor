@@ -20,7 +20,7 @@
 * [x] Repository initialization
 * [x] Multi-platform git mirroring (GitHub, GitLab, Codeberg, Bitbucket)
 * [x] CI/CD infrastructure with security hardening
-* [x] AGPL-3.0-or-later licensing
+* [x] PMPL-1.0-or-later licensing
 * [x] Language policy defined (ReScript + Deno + Rust)
 
 === Security Hardening Applied
