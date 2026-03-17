@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Clade declaration — part of the gv-clade-index registry
+# See: https://github.com/hyperpolymath/gv-clade-index
+
+[identity]
+uuid = "84a06742-9413-5581-835c-db6f807c1c4e"
+primary-forge = "github"
+primary-owner = "hyperpolymath"
+canonical-name = "universal-chat-extractor"
+prefixed-name = "ap-universal-chat-extractor"
+
+[clade]
+primary = "ap"
+secondary = []
+assigned = "2026-03-16"
+rationale = ""
+
+[forges]
+github = "hyperpolymath/universal-chat-extractor"
+gitlab = "hyperpolymath/universal-chat-extractor"
+bitbucket = "hyperpolymath/universal-chat-extractor"
+
+[lineage]
+type = "standalone"
+parent = "Chat export/extraction tool"
+born = "2026-03-16"
