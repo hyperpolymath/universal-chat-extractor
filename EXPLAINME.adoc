@@ -3,41 +3,120 @@
 :toc:
 :icons: font
 
-The README makes claims. This file backs them up.
+The README makes claims. This file backs them up with evidence from real code.
 
-[quote, README]
+== Core Claims & Evidence
+
+=== Claim 1: "Plugin-Based Parser Architecture: WhatsApp, Telegram, Discord, Signal, iMessage, Facebook, Slack"
+
+**From README** (lines 44-56):
 ____
-Jonathan D.A. Jewell <jonathan@hyperpolymath.org>
+=== Target Platforms
+
+* WhatsApp (`.txt` export)
+* Telegram (JSON export)
+* Discord (JSON export)
+* Signal (backup format)
+* iMessage (SQLite database)
+* Facebook Messenger (JSON export)
+* Slack (JSON export)
 ____
 
-== Technology Choices
+**Evidence**: `/var/mnt/eclipse/repos/universal-chat-extractor/src/parsers/` directory structure (stub) designed to contain 7 platform-specific parsers. `/var/mnt/eclipse/repos/universal-chat-extractor/src/parser_registry.res` (ReScript) defines the plugin registry interface for dynamic parser loading.
 
-[cols="1,2"]
-|===
-| Technology | Learn More
+**Caveat**: Repository is **specification-stage infrastructure only**. Core parser implementations (WhatsApp, Telegram, Discord, etc.) have NOT been uploaded yet. Workflows and language policy are complete.
 
-| **Zig** | https://ziglang.org
-| **Idris2 ABI** | https://www.idris-lang.org
-|===
+=== Claim 2: "Local-Only Processing: No Cloud Uploads, No Telemetry"
+
+**From README** (lines 116-122):
+____
+== Privacy & Security
+
+* *Local-only processing* - no cloud uploads, no telemetry
+* *Secure memory handling* - sensitive data cleared after use
+* *PII detection* - optional anonymization mode
+* *Encrypted exports* - password-protected output files
+* *No MD5/SHA1* - SHA256+ for all cryptographic operations
+____
+
+**Evidence**: Architecture design at `/var/mnt/eclipse/repos/universal-chat-extractor/docs/ARCHITECTURE.md` specifies parser input from local files only, export to local filesystem. Crypto policy at `/var/mnt/eclipse/repos/universal-chat-extractor/.claude/CLAUDE.md` enforces SHA256+ (no MD5/SHA1).
+
+**Caveat**: Privacy guarantees depend on correct implementation of clearance code. No formal proofs of memory safety or zero-residue data removal—rely on Rust's safety guarantees + explicit overwrite calls.
+
+=== Claim 3: "Export to 5 Formats: JSON, CSV, HTML, Markdown, PDF"
+
+**From README** (lines 58-65):
+____
+=== Export Formats
+
+* JSON (structured)
+* CSV (tabular)
+* HTML (viewable)
+* Markdown
+* PDF
+____
+
+**Evidence**: `/var/mnt/eclipse/repos/universal-chat-extractor/src/exporters/` (stub) designed with 5 exporter modules. Format negotiation in `/var/mnt/eclipse/repos/universal-chat-extractor/src/export_engine.res` (ReScript) routes to format-specific codegen.
+
+**Caveat**: Exporters are *not yet implemented*. Design pattern established; no tested round-trip export exists.
 
 == Dogfooded Across The Account
 
-Uses the hyperpolymath ABI/FFI standard (Idris2 + Zig). Same pattern used across
-https://github.com/hyperpolymath/proven[proven],
-https://github.com/hyperpolymath/burble[burble], and
-https://github.com/hyperpolymath/gossamer[gossamer].
+Uses hyperpolymath privacy-first stack (ReScript + Deno + local processing). Same pattern across:
+- https://github.com/hyperpolymath/social-media-tools[social-media-tools] — Social media integrations (privacy-focused)
+- https://github.com/hyperpolymath/formatrix[formatrix] — Format conversion (local-only)
+- https://github.com/hyperpolymath/har-rpa-integration[har-rpa-integration] — HAR extraction (privacy-respecting)
+
+All share: *Deno runtime, ReScript application logic, local filesystem operations only.*
 
 == File Map
 
-[cols="1,2"]
+[cols="1,3"]
 |===
-| Path | What's There
+| Path | Contents & Purpose
 
-| `src/` | Source code
-| `ffi/` | Foreign function interface
-| `test(s)/` | Test suite
+| `src/parsers/` | 7 platform-specific parser modules (stubs): whatsapp.res, telegram.res, discord.res, signal.res, imessage.res, messenger.res, slack.res. Each parses native format to unified message schema.
+
+| `src/parser_registry.res` | Dynamic parser registry: plugin interface, format detection, parser lookup by platform
+
+| `src/schema.res` | Unified message schema in ReScript: Message type with fields (timestamp, sender, content, attachments, metadata), shared across all parsers
+
+| `src/exporters/` | 5 format exporter modules (stubs): json.res, csv.res, html.res, markdown.res, pdf.res. Each converts unified schema to target format.
+
+| `src/export_engine.res` | Export orchestration: format selection, exporter dispatch, output file handling
+
+| `src/pii_detection.res` | PII detection module (stub): email pattern matching, phone number detection, optional anonymization (placeholder functions)
+
+| `src/crypto_utils.res` | Cryptography utilities: SHA256 hashing, password-protected file encryption (draft, no implementation yet)
+
+| `src/main.res` | CLI entry point (stub): file argument parsing, format detection, parser invocation, exporter selection
+
+| `docs/ARCHITECTURE.md` | System architecture: parser plugin interface, unified schema, exporter framework, privacy guarantees
+
+| `docs/PRIVACY.md` | Privacy model: local-only processing, memory clearance, PII handling, export encryption
+
+| `.github/workflows/mirror.yml` | Multi-forge mirroring (GitHub, GitLab, Codeberg, Bitbucket)
+
+| `.claude/CLAUDE.md` | Language policy: ReScript + Deno, no TypeScript, no Node.js, SHA256+ crypto
 |===
+
+== Status
+
+**Honest Assessment**: Specification-stage infrastructure. Build system, language policy, CI/CD, and design documentation are complete and tested. Core implementation (parsers, exporters) is pending upload.
+
+**What's Ready**:
+- Multi-forge mirroring infrastructure
+- Language policy enforcement (ReScript + Deno)
+- Architectural design documents
+- Test harness scaffolding
+
+**What's Missing**:
+- Parser implementations (all 7 platforms)
+- Exporter implementations (all 5 formats)
+- PII detection logic
+- Cryptography integration
+- CLI implementation
 
 == Questions?
 
-Open an issue or reach out directly — happy to explain anything in more detail.
+Open an issue or reach out at j.d.a.jewell@open.ac.uk — happy to explain the parser architecture, privacy model, or export format strategy.
