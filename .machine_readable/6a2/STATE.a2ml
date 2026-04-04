@@ -5,10 +5,19 @@
 [metadata]
 project = "universal-chat-extractor"
 version = "0.1.0"
-last-updated = "2026-03-15"
+last-updated = "2026-04-04"
 status = "active"
 
 [project-context]
 name = "universal-chat-extractor"
-completion-percentage = 0
+completion-percentage = 5
 phase = "In development"
+crg-grade = "C"
+
+[test-coverage]
+crg-grade-achieved = "C"
+crg-grade-date = "2026-04-04"
+test-categories = ["unit", "smoke", "property", "e2e", "contract", "aspect", "bench"]
+test-runner = "deno test"
+bench-runner = "deno bench"
+total-tests = 143
