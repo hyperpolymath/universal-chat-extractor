@@ -12,7 +12,7 @@ status = "active"
 name = "universal-chat-extractor"
 completion-percentage = 5
 phase = "In development"
-crg-grade = "C"
+crg-grade = "E"
 
 [test-coverage]
 crg-grade-achieved = "C"
