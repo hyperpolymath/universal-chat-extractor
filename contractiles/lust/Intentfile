@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: PLMP-1.0-or-later
+# Intentfile - declarative intent contract (template)
+# Sibling of contractiles/must/Mustfile (invariants) and
+# contractiles/dust/Dustfile (recovery). Captures the *desired*
+# end-state of the system separately from its invariants and
+# rollback hooks.
+
+version: 1
+
+metadata:
+  name: project-intent-contract
+  spec: v0.0.1
+  description: "Declarative end-state intent for the project."
+
+intents:
+  - name: dependencies-resolved
+    description: "All declared runtime dependencies must be locatable on PATH or via Guix."
+    desired: "deno --version && pkg-config --version"
+    rationale: "A missing dep at deploy time degrades to a non-recoverable error."
+
+  - name: scaffolding-complete
+    description: "Templating scaffold renders without unresolved placeholders."
+    desired: "grep -RE '\\{\\{\\s*[A-Z_]+\\s*\\}\\}' templates/ | wc -l | grep -q '^0$'"
+    rationale: "Unrendered placeholders ship broken templates to downstream users."
+
+  - name: license-headers-present
+    description: "Every source file carries an SPDX header."
+    desired: "scripts/check-spdx.sh"
+    rationale: "Estate-wide compliance posture (Hyperpolymath standard)."

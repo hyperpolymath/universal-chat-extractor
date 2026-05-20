@@ -1,0 +1,24 @@
+-- SPDX-License-Identifier: PMPL-1.0-or-later
+-- universal-chat-extractor Idris2 test suite. Estate port 11/11 (final).
+-- 7 TS test files ported (unit + contract + aspect + property + smoke + e2e
+-- + bench), content-validation pattern plus pure-logic helpers for the unit
+-- and bench assertions.
+
+package universal-chat-extractor-tests
+
+sourcedir = "tests/idris2"
+
+depends = base
+
+modules = Test.Spec
+        , UnitTest
+        , ContractTest
+        , AspectTest
+        , PropertyTest
+        , SmokeTest
+        , E2ETest
+        , BenchTest
+        , Main
+
+main = Main
+executable = "universal-chat-extractor-tests"
