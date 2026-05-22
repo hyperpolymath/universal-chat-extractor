@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 //
 // End-to-end / reflexive tests for universal-chat-extractor.
@@ -21,7 +21,7 @@ const REPO_ROOT = new URL("../", import.meta.url).pathname;
 // E2E: Reflexive — this test file has correct SPDX header
 // ---------------------------------------------------------------------------
 
-Deno.test("e2e/reflexive: this test file carries PMPL-1.0-or-later header", async () => {
+Deno.test("e2e/reflexive: this test file carries MPL-2.0 header", async () => {
   const content = await Deno.readTextFile(REPO_ROOT + "tests/e2e_test.ts");
   assertMatch(content, /SPDX-License-Identifier:\s*PMPL-1\.0-or-later/);
 });

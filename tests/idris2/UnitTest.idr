@@ -1,4 +1,4 @@
--- SPDX-License-Identifier: PMPL-1.0-or-later
+-- SPDX-License-Identifier: MPL-2.0
 -- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 --
 -- Port of tests/unit_test.ts to Idris2, estate-rollout port 11/11.
@@ -158,12 +158,12 @@ public export
 allSuites : List TestCase
 allSuites =
   [ test "unit: extractSpdxId parses valid SPDX line" $ do
-      let content = "// SPDX-License-Identifier: PMPL-1.0-or-later\ncode"
-      assertEq (extractSpdxId content) "PMPL-1.0-or-later"
+      let content = "// SPDX-License-Identifier: MPL-2.0\ncode"
+      assertEq (extractSpdxId content) "MPL-2.0"
 
   , test "unit: extractSpdxId handles TOML-style comment" $ do
-      let content = "# SPDX-License-Identifier: PMPL-1.0-or-later\n[section]"
-      assertEq (extractSpdxId content) "PMPL-1.0-or-later"
+      let content = "# SPDX-License-Identifier: MPL-2.0\n[section]"
+      assertEq (extractSpdxId content) "MPL-2.0"
 
   , test "unit: extractSpdxId returns empty when header absent" $ do
       assertEq (extractSpdxId "no license here") ""
@@ -209,7 +209,7 @@ allSuites =
 
   , test "unit: STATE.a2ml has SPDX header" $ do
       content <- readFileToString ".machine_readable/6a2/STATE.a2ml"
-      assertEq (extractSpdxId content) "PMPL-1.0-or-later"
+      assertEq (extractSpdxId content) "MPL-2.0"
 
   , test "unit: STATE.a2ml has version field" $ do
       content <- readFileToString ".machine_readable/6a2/STATE.a2ml"
@@ -223,8 +223,8 @@ allSuites =
         ]
 
   , test "unit: LICENSES directory contains PMPL text" $ do
-      ok <- fileExists "LICENSES/PMPL-1.0-or-later.txt"
-      assertTrue "LICENSES/PMPL-1.0-or-later.txt must exist" ok
+      ok <- fileExists "LICENSES/MPL-2.0.txt"
+      assertTrue "LICENSES/MPL-2.0.txt must exist" ok
 
   , test "unit: 0-AI-MANIFEST.a2ml exists" $ do
       ok <- fileExists "0-AI-MANIFEST.a2ml"

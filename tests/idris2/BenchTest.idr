@@ -1,4 +1,4 @@
--- SPDX-License-Identifier: PMPL-1.0-or-later
+-- SPDX-License-Identifier: MPL-2.0
 -- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 --
 -- Port of tests/bench_test.ts to Idris2, estate-rollout port 11/11.
@@ -129,7 +129,7 @@ benchLineFor n =
 ||| SPDX extractor reliably finds the identifier in scaffold-shaped content).
 sampleContent : String
 sampleContent =
-  "# SPDX-License-Identifier: PMPL-1.0-or-later\n" ++
+  "# SPDX-License-Identifier: MPL-2.0\n" ++
   "# Copyright (c) 2026 Jonathan D.A. Jewell\n\n" ++
   "[metadata]\n" ++
   "project = \"universal-chat-extractor\"\n" ++
@@ -194,7 +194,7 @@ allSuites =
       assertTrue "all 100 lines parsed" (all isJust parsed)
 
   , test "bench-assert: SPDX regex match on sample content" $
-      assertEq (extractSpdxId sampleContent) "PMPL-1.0-or-later"
+      assertEq (extractSpdxId sampleContent) "MPL-2.0"
 
   , test "bench-assert: placeholder detection on sample content" $
       -- sampleContent has no `{{XXX}}` placeholder, so detection must return False.

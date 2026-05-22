@@ -1,4 +1,4 @@
--- SPDX-License-Identifier: PMPL-1.0-or-later
+-- SPDX-License-Identifier: MPL-2.0
 -- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 --
 -- Port of tests/contract_test.ts to Idris2, estate-rollout port 11/11.
@@ -109,8 +109,8 @@ allSuites =
         , assertTrue "LICENSE references palimpsest" (isInfixOf "palimpsest" lc)
         ]
 
-  , test "contract/license: LICENSES/PMPL-1.0-or-later.txt present" $ do
-      ok <- fileExists "LICENSES/PMPL-1.0-or-later.txt"
+  , test "contract/license: LICENSES/MPL-2.0.txt present" $ do
+      ok <- fileExists "LICENSES/MPL-2.0.txt"
       assertTrue "PMPL text present" ok
 
   , test "contract/license: README.adoc has SPDX header" $ do

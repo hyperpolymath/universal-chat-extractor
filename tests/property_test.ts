@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 //
 // Property-based (P2P) tests for universal-chat-extractor.
@@ -52,10 +52,10 @@ Deno.test("property: every .a2ml file has SPDX-License-Identifier header", async
 });
 
 // ---------------------------------------------------------------------------
-// Property: SPDX identifier is always PMPL-1.0-or-later for hyperpolymath files
+// Property: SPDX identifier is always MPL-2.0 for hyperpolymath files
 // ---------------------------------------------------------------------------
 
-Deno.test("property: all .a2ml files use PMPL-1.0-or-later", async () => {
+Deno.test("property: all .a2ml files use MPL-2.0", async () => {
   const files = await collectA2mlFiles(REPO_ROOT + ".machine_readable");
   files.push(REPO_ROOT + "0-AI-MANIFEST.a2ml");
 
@@ -65,8 +65,8 @@ Deno.test("property: all .a2ml files use PMPL-1.0-or-later", async () => {
     if (match) {
       assertEquals(
         match[1],
-        "PMPL-1.0-or-later",
-        `Expected PMPL-1.0-or-later in ${file}, got ${match[1]}`,
+        "MPL-2.0",
+        `Expected MPL-2.0 in ${file}, got ${match[1]}`,
       );
     }
   }
@@ -119,8 +119,8 @@ Deno.test("property: all hook scripts have bash/sh shebang", async () => {
 // ---------------------------------------------------------------------------
 
 const commentStyles: [string, string][] = [
-  ["# SPDX-License-Identifier: PMPL-1.0-or-later", "PMPL-1.0-or-later"],
-  ["// SPDX-License-Identifier: PMPL-1.0-or-later", "PMPL-1.0-or-later"],
+  ["# SPDX-License-Identifier: MPL-2.0", "MPL-2.0"],
+  ["// SPDX-License-Identifier: MPL-2.0", "MPL-2.0"],
   ["/* SPDX-License-Identifier: MIT */", "MIT"],
   ["; SPDX-License-Identifier: Apache-2.0", "Apache-2.0"],
   ["-- SPDX-License-Identifier: GPL-3.0-only", "GPL-3.0-only"],

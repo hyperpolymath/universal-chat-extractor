@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 //
 // Contract tests for universal-chat-extractor.
@@ -105,8 +105,8 @@ Deno.test("contract/license: LICENSE file uses PMPL", async () => {
   );
 });
 
-Deno.test("contract/license: LICENSES/PMPL-1.0-or-later.txt present", async () => {
-  assertEquals(await pathExists("LICENSES/PMPL-1.0-or-later.txt"), true);
+Deno.test("contract/license: LICENSES/MPL-2.0.txt present", async () => {
+  assertEquals(await pathExists("LICENSES/MPL-2.0.txt"), true);
 });
 
 Deno.test("contract/license: README.adoc has SPDX header", async () => {

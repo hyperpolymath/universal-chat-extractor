@@ -1,4 +1,4 @@
--- SPDX-License-Identifier: PMPL-1.0-or-later
+-- SPDX-License-Identifier: MPL-2.0
 -- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 --
 -- Port of tests/e2e_test.ts to Idris2, estate-rollout port 11/11.
@@ -37,15 +37,15 @@ allSuites : List TestCase
 allSuites =
   [ -- ---------- Reflexive SPDX checks ----------
 
-    test "e2e/reflexive: tests/e2e_test.ts carries PMPL-1.0-or-later header" $ do
+    test "e2e/reflexive: tests/e2e_test.ts carries MPL-2.0 header" $ do
       content <- readFileToString "tests/e2e_test.ts"
       assertTrue "PMPL header present"
-        (isInfixOf "SPDX-License-Identifier: PMPL-1.0-or-later" content)
+        (isInfixOf "SPDX-License-Identifier: MPL-2.0" content)
 
-  , test "e2e/reflexive: tests/idris2/E2ETest.idr carries PMPL-1.0-or-later header" $ do
+  , test "e2e/reflexive: tests/idris2/E2ETest.idr carries MPL-2.0 header" $ do
       content <- readFileToString "tests/idris2/E2ETest.idr"
       assertTrue "PMPL header present"
-        (isInfixOf "SPDX-License-Identifier: PMPL-1.0-or-later" content)
+        (isInfixOf "SPDX-License-Identifier: MPL-2.0" content)
 
   , test "e2e/reflexive: tests/unit_test.ts has SPDX header" $ do
       content <- readFileToString "tests/unit_test.ts"

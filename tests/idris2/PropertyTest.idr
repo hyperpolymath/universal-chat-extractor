@@ -1,4 +1,4 @@
--- SPDX-License-Identifier: PMPL-1.0-or-later
+-- SPDX-License-Identifier: MPL-2.0
 -- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 --
 -- Port of tests/property_test.ts to Idris2, estate-rollout port 11/11.
@@ -147,7 +147,7 @@ allSpdxOk (f :: fs) = do
           putStrLn ("  missing SPDX header in " ++ f)
           pure False
 
-||| All listed files (skipped if absent) use exactly `PMPL-1.0-or-later`.
+||| All listed files (skipped if absent) use exactly `MPL-2.0`.
 allPmplOk : List String -> IO Bool
 allPmplOk [] = pure True
 allPmplOk (f :: fs) = do
@@ -157,11 +157,11 @@ allPmplOk (f :: fs) = do
     else do
       content <- readFileToString f
       let id = extractSpdxId content
-      if id == "" || id == "PMPL-1.0-or-later"
+      if id == "" || id == "MPL-2.0"
         then allPmplOk fs
         else do
           putStrLn ""
-          putStrLn ("  expected PMPL-1.0-or-later in " ++ f ++ ", got " ++ id)
+          putStrLn ("  expected MPL-2.0 in " ++ f ++ ", got " ++ id)
           pure False
 
 ||| All listed shell scripts (skipped if absent) start with a shebang.
@@ -203,7 +203,7 @@ allSuites =
   [ test "property: every .a2ml file has SPDX-License-Identifier header" $
       allSpdxOk a2mlFiles
 
-  , test "property: all .a2ml files use PMPL-1.0-or-later" $
+  , test "property: all .a2ml files use MPL-2.0" $
       allPmplOk a2mlFiles
 
   , test "property: all .idr files in src/abi/ have SPDX headers" $
@@ -215,10 +215,10 @@ allSuites =
     -- SPDX-extract handles a table of comment styles (table-driven).
 
   , test "property: SPDX extraction handles comment style \"# SPDX...\"" $
-      assertEq (extractSpdxId "# SPDX-License-Identifier: PMPL-1.0-or-later") "PMPL-1.0-or-later"
+      assertEq (extractSpdxId "# SPDX-License-Identifier: MPL-2.0") "MPL-2.0"
 
   , test "property: SPDX extraction handles comment style \"// SPDX...\"" $
-      assertEq (extractSpdxId "// SPDX-License-Identifier: PMPL-1.0-or-later") "PMPL-1.0-or-later"
+      assertEq (extractSpdxId "// SPDX-License-Identifier: MPL-2.0") "MPL-2.0"
 
   , test "property: SPDX extraction handles comment style \"/* SPDX...\"" $
       assertEq (extractSpdxId "/* SPDX-License-Identifier: MIT */") "MIT"

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 //
 // Unit tests for universal-chat-extractor.
@@ -45,13 +45,13 @@ function extractSpdxId(content: string): string | null {
 // ---------------------------------------------------------------------------
 
 Deno.test("unit: extractSpdxId parses valid SPDX line", () => {
-  const content = "// SPDX-License-Identifier: PMPL-1.0-or-later\ncode";
-  assertEquals(extractSpdxId(content), "PMPL-1.0-or-later");
+  const content = "// SPDX-License-Identifier: MPL-2.0\ncode";
+  assertEquals(extractSpdxId(content), "MPL-2.0");
 });
 
 Deno.test("unit: extractSpdxId handles TOML-style comment", () => {
-  const content = "# SPDX-License-Identifier: PMPL-1.0-or-later\n[section]";
-  assertEquals(extractSpdxId(content), "PMPL-1.0-or-later");
+  const content = "# SPDX-License-Identifier: MPL-2.0\n[section]";
+  assertEquals(extractSpdxId(content), "MPL-2.0");
 });
 
 Deno.test("unit: extractSpdxId returns null when header absent", () => {
@@ -138,7 +138,7 @@ Deno.test("unit: STATE.a2ml exists and has valid project name", async () => {
 Deno.test("unit: STATE.a2ml has SPDX header", async () => {
   const content = await readFile(".machine_readable/6a2/STATE.a2ml");
   assertNotEquals(content, null);
-  assertEquals(extractSpdxId(content!), "PMPL-1.0-or-later");
+  assertEquals(extractSpdxId(content!), "MPL-2.0");
 });
 
 Deno.test("unit: STATE.a2ml has version field", async () => {
@@ -158,8 +158,8 @@ Deno.test("unit: LICENSE file exists and is non-empty", async () => {
 });
 
 Deno.test("unit: LICENSES directory contains PMPL text", async () => {
-  const exists = await pathExists("LICENSES/PMPL-1.0-or-later.txt");
-  assertEquals(exists, true, "LICENSES/PMPL-1.0-or-later.txt must exist");
+  const exists = await pathExists("LICENSES/MPL-2.0.txt");
+  assertEquals(exists, true, "LICENSES/MPL-2.0.txt must exist");
 });
 
 // ---------------------------------------------------------------------------

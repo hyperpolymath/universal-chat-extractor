@@ -1,5 +1,5 @@
 image:https://img.shields.io/badge/License-PMPL--1.0-blue.svg[License: PMPL-1.0,link="https://github.com/hyperpolymath/palimpsest-license"]
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 // SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
 
 = Universal Chat Extractor
@@ -38,7 +38,7 @@ This repository contains infrastructure and planning materials. Core application
 |ReScript + Deno + Rust stack defined
 
 |Licensing
-|PMPL-1.0-or-later
+|MPL-2.0
 |===
 
 == Vision
@@ -132,7 +132,7 @@ This project is mirrored across multiple forges:
 
 == License
 
-This project is licensed under link:https://github.com/hyperpolymath/palimpsest-license.html[PMPL-1.0-or-later].
+This project is licensed under link:https://github.com/hyperpolymath/palimpsest-license.html[MPL-2.0].
 
 == Roadmap
 

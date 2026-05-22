@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 = Universal Chat Extractor - Roadmap
 :toc: auto
 :toclevels: 2
@@ -20,7 +20,7 @@
 * [x] Repository initialization
 * [x] Multi-platform git mirroring (GitHub, GitLab, Codeberg, Bitbucket)
 * [x] CI/CD infrastructure with security hardening
-* [x] PMPL-1.0-or-later licensing
+* [x] MPL-2.0 licensing
 * [x] Language policy defined (ReScript + Deno + Rust)
 
 === Security Hardening Applied
