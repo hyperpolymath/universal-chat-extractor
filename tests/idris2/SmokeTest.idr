@@ -151,9 +151,12 @@ allSuites =
       ok <- fileExists "docs/CITATIONS.adoc"
       assertTrue "docs/ present" ok
 
-  , test "smoke: required directory exists - examples" $ do
-      ok <- fileExists "examples/SafeDOMExample.res"
-      assertTrue "examples/ present" ok
+  -- Examples-directory probe removed 2026-05-26: the probe used
+  -- `examples/SafeDOMExample.res` as its proxy file, but that ReScript
+  -- fixture is being deleted estate-wide (gitbot-fleet#208 SafeDOM
+  -- sweep). Re-add a probe when a non-stale `examples/` file lands
+  -- (likely after the affinescript#56 DOM-binding survey produces a
+  -- canonical `examples/SafeDOMExample.affine`).
 
   , test "smoke: required directory exists - contractiles" $ do
       ok <- fileExists "contractiles/README.adoc"
