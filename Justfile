@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: MPL-2.0
+// Owner: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 # justfile - Just recipes for this project
 # See: https://github.com/hyperpolymath/mustfile
 
