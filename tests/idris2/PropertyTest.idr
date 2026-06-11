@@ -1,5 +1,5 @@
 -- SPDX-License-Identifier: MPL-2.0
--- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+-- Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 --
 -- Port of tests/property_test.ts to Idris2, estate-rollout port 11/11.
 -- 14 of 14 property cases ported.
@@ -244,7 +244,7 @@ allSuites =
       assertEq (normalisePlatform "Matrix") "matrix"
 
     -- Contractile presence. TS iterates dust/Dustfile, must/Mustfile,
-    -- lust/Intentfile. NOTE: contractiles/lust/Intentfile is not present in
+    -- intend/Intentfile. NOTE: contractiles/intend/Intentfile is not present in
     -- this repo; the TS test would currently fail on it too. We mirror the
     -- iteration faithfully so the Idris2 port preserves the TS semantics
     -- (one test per name, missing path -> failure). See the source-bug note
@@ -260,14 +260,14 @@ allSuites =
       content <- readFileToString "contractiles/must/Mustfile"
       assertTrue "Mustfile present and non-empty" (ok && length content > 0)
 
-  , test "property: contractile file exists and non-empty - contractiles/lust/Intentfile" $ do
-      -- SOURCE BUG: contractiles/lust/Intentfile is referenced by the TS
+  , test "property: contractile file exists and non-empty - contractiles/intend/Intentfile" $ do
+      -- SOURCE BUG: contractiles/intend/Intentfile is referenced by the TS
       -- iteration but the corresponding directory does not exist in this
       -- repo (contractiles/ only contains dust/ and must/). The TS test
       -- would also fail. Reported separately; this Idris2 port keeps the
       -- assertion so the bug remains visible.
-      ok <- fileExists "contractiles/lust/Intentfile"
-      content <- readFileToString "contractiles/lust/Intentfile"
+      ok <- fileExists "contractiles/intend/Intentfile"
+      content <- readFileToString "contractiles/intend/Intentfile"
       assertTrue "Intentfile present and non-empty (KNOWN SOURCE BUG)" (ok && length content > 0)
 
     -- README.adoc heading count: TS counts /^={1,6}\s+.+/gm matches and

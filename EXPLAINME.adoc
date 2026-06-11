@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
+// Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 = Universal Chat Extractor — Show Me The Receipts
+image:https://img.shields.io/badge/License-MPL_2.0-blue.svg[License: MPL-2.0,link="https://opensource.org/licenses/MPL-2.0"]
+
 :toc:
 :icons: font
 
@@ -120,3 +123,10 @@ All share: *Deno runtime, ReScript application logic, local filesystem operation
 == Questions?
 
 Open an issue or reach out at j.d.a.jewell@open.ac.uk — happy to explain the parser architecture, privacy model, or export format strategy.
+
+
+== License
+
+This project is licensed under the Mozilla Public License, v. 2.0. See the `LICENSE` file for details.
+
+SPDX-License-Identifier: MPL-2.0

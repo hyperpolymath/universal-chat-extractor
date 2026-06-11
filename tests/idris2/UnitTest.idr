@@ -1,5 +1,5 @@
 -- SPDX-License-Identifier: MPL-2.0
--- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+-- Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 --
 -- Port of tests/unit_test.ts to Idris2, estate-rollout port 11/11.
 -- 20 of 20 tests ported. SPDX-extract, placeholder, timestamp, and platform

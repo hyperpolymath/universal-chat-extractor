@@ -1,12 +1,25 @@
+<!--
+SPDX-License-Identifier: MPL-2.0
+Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+-->
 # TEST-NEEDS.md — CRG Grade C Achievement Record
 
-<!-- SPDX-License-Identifier: MPL-2.0 -->
 <!-- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk> -->
 
 ## CRG Grade: C — ACHIEVED 2026-04-04
 
 This document records the test categories added to achieve CRG Grade C for
 `universal-chat-extractor`.
+
+> **Test runner update (campaign #239 STEP 7, 2026-05-31)**: the seven `.ts`
+> test files described below were ported to Idris2 in commit `cdf791f`
+> ("estate port 11/11 — FINAL"). The canonical test sources now live in
+> `tests/idris2/` (`UnitTest.idr`, `SmokeTest.idr`, `PropertyTest.idr`,
+> `E2ETest.idr`, `ContractTest.idr`, `AspectTest.idr`, `BenchTest.idr`)
+> with `Main.idr` as the runner entry point. Build via the `.ipkg` package:
+> `idris2 --build universal-chat-extractor-tests.ipkg && ./build/exec/universal-chat-extractor-tests`.
+> The original `.ts` paths in the sections below are kept as historical
+> reference for the CRG-C audit record.
 
 ---
 
