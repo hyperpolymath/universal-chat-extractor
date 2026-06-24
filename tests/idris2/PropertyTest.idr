@@ -221,13 +221,13 @@ allSuites =
       assertEq (extractSpdxId "// SPDX-License-Identifier: MPL-2.0") "MPL-2.0"
 
   , test "property: SPDX extraction handles comment style \"/* SPDX...\"" $
-      assertEq (extractSpdxId "/* SPDX-License-Identifier: MIT */") "MIT"
+      assertEq (extractSpdxId "/* SPDX-License-Identifier: MPL-2.0 */") "MIT"
 
   , test "property: SPDX extraction handles comment style \"; SPDX...\"" $
-      assertEq (extractSpdxId "; SPDX-License-Identifier: Apache-2.0") "Apache-2.0"
+      assertEq (extractSpdxId "; SPDX-License-Identifier: MPL-2.0") "Apache-2.0"
 
   , test "property: SPDX extraction handles comment style \"-- SPDX...\"" $
-      assertEq (extractSpdxId "-- SPDX-License-Identifier: GPL-3.0-only") "GPL-3.0-only"
+      assertEq (extractSpdxId "-- SPDX-License-Identifier: MPL-2.0") "GPL-3.0-only"
 
     -- Platform-name canonicalisation (table-driven).
 

@@ -169,7 +169,7 @@ allSuites =
       assertEq (extractSpdxId "no license here") ""
 
   , test "unit: extractSpdxId handles leading whitespace" $ do
-      let content = "   // SPDX-License-Identifier: MIT\n"
+      let content = "   // SPDX-License-Identifier: MPL-2.0\n"
       assertEq (extractSpdxId content) "MIT"
 
   , test "unit: containsUnresolvedPlaceholder detects {{PROJECT}}" $ do
