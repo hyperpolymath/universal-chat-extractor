@@ -1,5 +1,5 @@
 -- SPDX-License-Identifier: MPL-2.0
--- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+-- Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 --
 -- Port of tests/unit_test.ts to Idris2, estate-rollout port 11/11.
 -- 20 of 20 tests ported. SPDX-extract, placeholder, timestamp, and platform
@@ -169,7 +169,7 @@ allSuites =
       assertEq (extractSpdxId "no license here") ""
 
   , test "unit: extractSpdxId handles leading whitespace" $ do
-      let content = "   // SPDX-License-Identifier: MIT\n"
+      let content = "   // SPDX-License-Identifier: MPL-2.0\n"
       assertEq (extractSpdxId content) "MIT"
 
   , test "unit: containsUnresolvedPlaceholder detects {{PROJECT}}" $ do

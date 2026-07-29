@@ -1,5 +1,5 @@
 -- SPDX-License-Identifier: MPL-2.0
--- Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+-- Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 --
 -- Port of tests/contract_test.ts to Idris2, estate-rollout port 11/11.
 -- 19 of 19 contract obligations ported. Each TS sub-iteration of a banned-name
