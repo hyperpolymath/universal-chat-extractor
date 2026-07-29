@@ -14,5 +14,4 @@
   (synopsis "universal-chat-extractor")
   (description "universal-chat-extractor — part of the hyperpolymath ecosystem.")
   (home-page "https://github.com/hyperpolymath/universal-chat-extractor")
-  (license ((@@ (guix licenses) license) "PMPL-1.0-or-later"
-             "https://github.com/hyperpolymath/palimpsest-license")))
+  (license mpl2.0))
