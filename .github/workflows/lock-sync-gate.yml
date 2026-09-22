@@ -41,6 +41,7 @@ jobs:
         env:
           REPO: ${{ github.repository }}
           SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
           TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
@@ -53,11 +54,14 @@ jobs:
           git remote add origin "https://github.com/${REPO}.git"
           git -c http.extraheader="${AUTH}" fetch -q --depth 1 origin "${SHA}"
           git checkout -q FETCH_HEAD
+          git -c http.extraheader="${AUTH}" fetch -q --depth 1 origin "${BASE_SHA}"
           echo "checked out ${SHA}"
 
       - name: Verify lockfile synchronisation
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
         run: |
           set -euo pipefail
-          test -x scripts/check-lock-sync.sh \
-            || { echo "::error::scripts/check-lock-sync.sh missing or not executable"; exit 1; }
-          ./scripts/check-lock-sync.sh
+          git show "${BASE_SHA}:scripts/check-lock-sync.sh" > "${RUNNER_TEMP}/check-lock-sync.sh"
+          chmod +x "${RUNNER_TEMP}/check-lock-sync.sh"
+          "${RUNNER_TEMP}/check-lock-sync.sh"
