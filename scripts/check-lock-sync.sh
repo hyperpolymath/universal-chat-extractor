@@ -176,8 +176,6 @@ END {
     wf = ARGV[i]
     if (wf == lockfile) continue
     key = wf
-    sub(/.*\//, "", key)
-    key = ".github/workflows/" key          # the lockfile always uses this canonical path
 
     if (dollar[wf] != "") {
       printf "FAIL %s\n     invalid local-action rewrite (uses: $/...):%s\n", key, dollar[wf]
@@ -250,7 +248,6 @@ END {
     found = 0
     for (i = 1; i < ARGC; i++) {
       q = ARGV[i]; if (q == lockfile) continue
-      sub(/.*\//, "", q); q = ".github/workflows/" q
       if (q == p) { found = 1; break }
     }
     if (!found) { printf "FAIL %s\n     lockfile entry for a workflow file that does not exist\n", p; bad = 1 }
@@ -271,7 +268,6 @@ END {
   nunlisted = 0; unlisted = ""
   for (i = 1; i < ARGC; i++) {
     q = ARGV[i]; if (q == lockfile) continue
-    sub(/.*\//, "", q); q = ".github/workflows/" q
     if (q in seen_path) continue
     nunlisted++; unlisted = unlisted "\n       " q
   }
