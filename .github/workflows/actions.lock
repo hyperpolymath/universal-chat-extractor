@@ -38,7 +38,6 @@ workflows:
         - 'hyperpolymath/standards@84355587cb2a1f86e6882de83514a32db2646e7a'
     '.github/workflows/secret-scanner.yml':
         - 'actions/checkout@v7.0.1'
-        - 'hyperpolymath/standards@84355587cb2a1f86e6882de83514a32db2646e7a'
         - 'trufflesecurity/trufflehog@v3.97.5'
 dependencies:
     'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9':
