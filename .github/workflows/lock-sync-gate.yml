@@ -20,6 +20,7 @@ name: Lock Sync Gate
 # ruleset that requires this check.
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
     branches: [main]
@@ -62,6 +63,23 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
         run: |
           set -euo pipefail
-          git show "${BASE_SHA}:scripts/check-lock-sync.sh" > "${RUNNER_TEMP}/check-lock-sync.sh"
+          # The checker is taken from the BASE commit, never from the pull
+          # request's own tree, so a PR cannot weaken the gate that judges it.
+          #
+          # Exception, and only this one: on the PR that FIRST introduces the
+          # checker the base has no copy of it, so the base-only form can never
+          # pass. Fall back to the head copy in that case alone -- there is no
+          # base version for the head to be weaker than, so the anti-tamper
+          # property is not what is being given up. Absent from both is a hard
+          # failure, never a skip.
+          if git cat-file -e "${BASE_SHA}:scripts/check-lock-sync.sh" 2>/dev/null; then
+            git show "${BASE_SHA}:scripts/check-lock-sync.sh" > "${RUNNER_TEMP}/check-lock-sync.sh"
+            echo "checker: base ${BASE_SHA}"
+          else
+            test -f scripts/check-lock-sync.sh \
+              || { echo "::error::scripts/check-lock-sync.sh is absent from BOTH base and head"; exit 1; }
+            cp scripts/check-lock-sync.sh "${RUNNER_TEMP}/check-lock-sync.sh"
+            echo "::notice::base carries no checker; bootstrapping from head (first-introduction PR)"
+          fi
           chmod +x "${RUNNER_TEMP}/check-lock-sync.sh"
           "${RUNNER_TEMP}/check-lock-sync.sh"
