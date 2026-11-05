@@ -38,7 +38,7 @@ workflows:
         - 'hyperpolymath/standards@84355587cb2a1f86e6882de83514a32db2646e7a'
     '.github/workflows/secret-scanner.yml':
         - 'actions/checkout@v7.0.1'
-        - 'trufflesecurity/trufflehog@v3.99.7'
+        - 'trufflesecurity/trufflehog@v3.99.8'
 dependencies:
     'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9':
         ref: '55cc8345863c7cc4c66a329aec7e433d2d1c52a9'
@@ -156,9 +156,9 @@ dependencies:
         commit: 'sha1-28959ce8df70de7be546dd1250a005dd32156697'
         owner_id: 18365890
         repo_id: 220359305
-    'trufflesecurity/trufflehog@v3.99.7':
-        ref: 'v3.99.7'
-        commit: 'sha1-31ce31ee1abbcc7dc8eee5764c17121c3044c8b2'
+    'trufflesecurity/trufflehog@v3.99.8':
+        ref: 'v3.99.8'
+        commit: 'sha1-ea68ca03c865c5f324e86e849ced20ed3cf9dbbb'
         owner_id: 79229934
         repo_id: 77726177
     'webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555':
