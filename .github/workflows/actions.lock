@@ -34,7 +34,7 @@ workflows:
     '.github/workflows/scorecard.yml': []
     '.github/workflows/secret-scanner.yml':
         - 'actions/checkout@v7.0.1'
-        - 'trufflesecurity/trufflehog@v3.99.8'
+        - 'trufflesecurity/trufflehog@v3.99.9'
 dependencies:
     'actions/cache@v6.1.0':
         ref: 'v6.1.0'
@@ -88,8 +88,8 @@ dependencies:
         commit: 'sha1-28959ce8df70de7be546dd1250a005dd32156697'
         owner_id: 18365890
         repo_id: 220359305
-    'trufflesecurity/trufflehog@v3.99.8':
-        ref: 'v3.99.8'
-        commit: 'sha1-ea68ca03c865c5f324e86e849ced20ed3cf9dbbb'
+    'trufflesecurity/trufflehog@v3.99.9':
+        ref: 'v3.99.9'
+        commit: 'sha1-3bd2b5887eb0efb8fa18bfd1d296032924e4ffdc'
         owner_id: 79229934
         repo_id: 77726177
