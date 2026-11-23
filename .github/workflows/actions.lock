@@ -14,7 +14,7 @@ workflows:
         - 'haskell-actions/setup@v2.12.1'
     '.github/workflows/codeql.yml':
         - 'actions/checkout@v7.0.1'
-        - 'github/codeql-action@33d7b85da1a04171e211befe2c739303b9a4c066'
+        - 'github/codeql-action@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea'
     '.github/workflows/dogfood-gate.yml':
         - 'actions/checkout@v7.0.1'
     '.github/workflows/governance.yml': []
@@ -34,7 +34,7 @@ workflows:
     '.github/workflows/scorecard.yml': []
     '.github/workflows/secret-scanner.yml':
         - 'actions/checkout@v7.0.1'
-        - 'trufflesecurity/trufflehog@v3.99.9'
+        - 'trufflesecurity/trufflehog@v3.100.0'
 dependencies:
     'actions/cache@v6.1.0':
         ref: 'v6.1.0'
@@ -68,9 +68,9 @@ dependencies:
         repo_id: 496012378
         uses:
             - 'actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f'
-    'github/codeql-action@33d7b85da1a04171e211befe2c739303b9a4c066':
-        ref: 'v4.39.3'
-        commit: 'sha1-33d7b85da1a04171e211befe2c739303b9a4c066'
+    'github/codeql-action@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea':
+        ref: 'v4.39.4'
+        commit: 'sha1-1bd86f2fdb4b86187fa4059f16f31a3202acc9ea'
         owner_id: 9919
         repo_id: 259445878
     'haskell-actions/setup@v2.12.1':
@@ -88,8 +88,8 @@ dependencies:
         commit: 'sha1-28959ce8df70de7be546dd1250a005dd32156697'
         owner_id: 18365890
         repo_id: 220359305
-    'trufflesecurity/trufflehog@v3.99.9':
-        ref: 'v3.99.9'
-        commit: 'sha1-3bd2b5887eb0efb8fa18bfd1d296032924e4ffdc'
+    'trufflesecurity/trufflehog@v3.100.0':
+        ref: 'v3.100.0'
+        commit: 'sha1-d232362a64a09a9e7d58267b8f5acef00ae90e23'
         owner_id: 79229934
         repo_id: 77726177
