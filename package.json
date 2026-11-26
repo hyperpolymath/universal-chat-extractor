@@ -1,0 +1,7 @@
+{
+  "name": "universal-chat-extractor",
+  "private": true,
+  "devDependencies": {
+    "prettier": "3.10.1"
+  }
+}
