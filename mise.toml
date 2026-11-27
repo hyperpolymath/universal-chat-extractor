@@ -2,7 +2,7 @@
 # Language runtimes
 rust = "latest"
 zig = "latest"
-bun = "latest"
+bun = "1.4"
 denojs = "latest"
 
 # Package managers
@@ -37,11 +37,8 @@ task = "go-task"
 description = "Install pinned JS dev tools (Prettier) from bun.lock"
 run = "bun install --frozen-lockfile"
 
-[tasks.build]
-run = "cargo build --release"
-
 [tasks.test]
-run = "cargo test"
+run = "idris2 --build universal-chat-extractor-tests.ipkg && ./build/exec/universal-chat-extractor-tests"
 
 [tasks.lint]
 depends = ["setup"]
